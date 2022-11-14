@@ -133,6 +133,9 @@ autocmd BufWinEnter,WinEnter term://* tnoremap <Esc> <C-\><C-n>
 " Ctrl+Cmd+n is mapped to Ctrl+' in alacirtty
 tnoremap µ <C-\><C-n>:split\|:terminal<cr>
 
+" map Ctrl+P to pasting
+tnoremap <expr> <C-P> '<C-\><C-N>""pi'
+
 " make it more obvious which vim split is active
 augroup CursorLineOnlyInActiveWindow
   autocmd!
