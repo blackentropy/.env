@@ -34,6 +34,12 @@ inoremap <silent><expr> <CR>
 " map <leader> d to tsserver.goToSourceDefinition
 noremap <leader>d :CocCommand tsserver.goToSourceDefinition<CR>
 
+" map <leader>an to go the next diagnostic
+noremap <leader>an :call CocAction('diagnosticNext')<CR>
+
+" map <leader>ap to go the next diagnostic
+noremap <leader>ap :call CocAction('diagnosticPrevious')<CR>
+
 " map <leader> q to :q
 noremap <leader>q :q<cr>
 
