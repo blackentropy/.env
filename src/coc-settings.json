@@ -1,0 +1,11 @@
+{
+	"diagnostic.checkCurrentLine": true,
+	"coc.preferences.formatOnSaveFiletypes": ["css", "typescript", "javascript", "typescriptreact"],
+  "eslint.workingDirectories": [
+    "./backend",
+    "./frontend",
+    "./mobile",
+    "./packages/runtimeShared",
+    "./packages/runtime"
+  ]
+}

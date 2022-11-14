@@ -1,0 +1,74 @@
+
+# Configuration for Alacritty, the GPU enhanced terminal emulator.
+
+# use xxd -c1 to discover hexcodes
+key_bindings:
+  - { key: N, mods: Control|Command, chars: "µ" }
+  - { key: T, mods: Command, chars: "\x06\x63" }
+  - { key: W, mods: Command, chars: "\x06\x26" }
+  - { key: Tab, mods: Control, chars: "\x06\x6e" }
+  - { key: Tab, mods: Control|Shift, chars: "\x06\x70" }
+  - { key: P, mods: Command, chars: "\x10" }
+
+# Font configuration
+font:
+  normal:
+    family: Source Code Pro
+    style: Regular
+
+  # Bold font face
+  #bold:
+    # Font family
+    #
+    # If the bold family is not specified, it will fall back to the
+    # value specified for the normal font.
+    #family: monospace
+
+    # The `style` can be specified to pick a specific face.
+    #style: Bold
+
+  # Italic font face
+  #italic:
+    # Font family
+    #
+    # If the italic family is not specified, it will fall back to the
+    # value specified for the normal font.
+    #family: monospace
+
+    # The `style` can be specified to pick a specific face.
+    #style: Italic
+
+  # Bold italic font face
+  #bold_italic:
+    # Font family
+    #
+    # If the bold italic family is not specified, it will fall back to the
+    # value specified for the normal font.
+    #family: monospace
+
+    # The `style` can be specified to pick a specific face.
+    #style: Bold Italic
+
+  # Point size
+  #size: 11.0
+
+  # Offset is the extra space around each character. `offset.y` can be thought
+  # of as modifying the line spacing, and `offset.x` as modifying the letter
+  # spacing.
+  #offset:
+  #  x: 0
+  #  y: 0
+
+  # Glyph offset determines the locations of the glyphs within their cells with
+  # the default being at the bottom. Increasing `x` moves the glyph to the
+  # right, increasing `y` moves the glyph upward.
+  #glyph_offset:
+  #  x: 0
+  #  y: 0
+
+  # Use built-in font for box drawing characters.
+  #
+  # If `true`, Alacritty will use a custom built-in font for box drawing
+  # characters (Unicode points 2500 - 259f).
+  #
+  #builtin_box_drawing: true
