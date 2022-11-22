@@ -1,5 +1,8 @@
 
 # Configuration for Alacritty, the GPU enhanced terminal emulator.
+#
+window:
+  decorations: "None"
 
 # use xxd -c1 to discover hexcodes
 key_bindings:

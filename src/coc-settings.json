@@ -7,5 +7,6 @@
     "./mobile",
     "./packages/runtimeShared",
     "./packages/runtime"
-  ]
+  ],
+  "tsserver.log": "verbose"
 }

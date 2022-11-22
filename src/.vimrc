@@ -32,13 +32,32 @@ inoremap <silent><expr> <CR>
       \ "\<CR>"
 
 " map <leader> d to tsserver.goToSourceDefinition
-noremap <leader>d :CocCommand tsserver.goToSourceDefinition<CR>
+" noremap <leader>d :CocCommand tsserver.goToSourceDefinition<CR>
+noremap <leader>d <Plug>(coc-definition)
+noremap <leader>t <Plug>(coc-type-definition)
+noremap <leader>fr <Plug>(coc-references)
+noremap <leader>qf <Plug>(coc-fix-current)
+
 
 " map <leader>an to go the next diagnostic
 noremap <leader>an :call CocAction('diagnosticNext')<CR>
 
 " map <leader>ap to go the next diagnostic
 noremap <leader>ap :call CocAction('diagnosticPrevious')<CR>
+
+
+" Use Shift+k to show documentation in preview window.
+nnoremap <silent> K :call ShowDocumentation()<CR>
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
+endfunction
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " map <leader> q to :q
 noremap <leader>q :q<cr>
@@ -101,7 +120,14 @@ tnoremap <silent> <C-l> <Cmd>TmuxNavigateRight<CR>
 
 " search files with Ctrl+p
 noremap <C-p> :GFiles<CR>
-noremap <leader>g :execute "Ag " . expand("<cword>")<cr>
+
+" fzf with <leader>g
+command! -bang -nargs=* GGrep
+  \ call fzf#vim#grep(
+  \   'git grep --line-number -- '.shellescape(<q-args>), 0,
+  \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
+noremap <leader>g :GGrep<cr>
+noremap <leader>fw :execute "GGrep " . expand("<cword>")<cr>
 
 
 " automatically start in insert mode in termianls
@@ -129,12 +155,17 @@ autocmd TermOpen * tnoremap <Esc> <C-\><C-n>
 autocmd BufWinEnter,WinEnter term://* tnoremap <C-N> <C-\><C-n>:vsplit\|:terminal<cr>
 autocmd BufWinEnter,WinEnter term://* tnoremap <Esc> <C-\><C-n>
 
+
+" map Ctrl+P to pasting
+" but don't do it in fzf preview windows
+autocmd TermOpen * tnoremap <expr> <C-P> '<C-\><C-N>""pi'
+autocmd BufWinEnter,WinEnter term://* tnoremap <expr> <C-P> '<C-\><C-N>""pi'
+autocmd FileType fzf tnoremap <C-p> <Up>
+
+
 " map Option+M (µ) (in terminals) to creating a terminal on the bottom
 " Ctrl+Cmd+n is mapped to Ctrl+' in alacirtty
 tnoremap µ <C-\><C-n>:split\|:terminal<cr>
-
-" map Ctrl+P to pasting
-tnoremap <expr> <C-P> '<C-\><C-N>""pi'
 
 " make it more obvious which vim split is active
 augroup CursorLineOnlyInActiveWindow
