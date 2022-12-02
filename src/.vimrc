@@ -8,6 +8,7 @@ Plug 'preservim/nerdtree'
 Plug 'samjwill/nvim-unception'
 Plug 'tpope/vim-commentary'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'powerman/vim-plugin-AnsiEsc'
 call plug#end()
 
 " make space the leader key
@@ -185,3 +186,10 @@ autocmd FileType gitcommit,gitrebase,gitconfig set bufhidden=delete
 
 " open current file in NERDTree with <leader>o
  map <leader>o :NERDTreeFind<cr>
+
+" Turn on ANSI color escaping on .log and .txt files
+autocmd BufNewFile,BufRead *.log AnsiEsc
+autocmd BufNewFile,BufRead *.txt AnsiEsc
+
+" preview a file by pressing f on itin NERDTree
+let NERDTreeMapPreview='f'
