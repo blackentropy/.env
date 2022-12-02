@@ -114,10 +114,6 @@ inoremap <silent> <C-h> <Cmd>TmuxNavigateLeft<CR>
 inoremap <silent> <C-j> <Cmd>TmuxNavigateDown<CR>
 inoremap <silent> <C-k> <Cmd>TmuxNavigateUp<CR>
 inoremap <silent> <C-l> <Cmd>TmuxNavigateRight<CR>
-tnoremap <silent> <C-h> <Cmd>TmuxNavigateLeft<CR>
-tnoremap <silent> <C-j> <Cmd>TmuxNavigateDown<CR>
-tnoremap <silent> <C-k> <Cmd>TmuxNavigateUp<CR>
-tnoremap <silent> <C-l> <Cmd>TmuxNavigateRight<CR>
 
 " search files with Ctrl+p
 noremap <C-p> :GFiles<CR>
@@ -151,10 +147,16 @@ tnoremap <Esc> <C-\><C-n>
 nnoremap <C-N> :vsplit\|:terminal<cr>
 autocmd FileType fzf tnoremap <C-n> <Down>
 autocmd FileType fzf tnoremap <Esc> <Nop>
-autocmd TermOpen * tnoremap <C-N> <C-\><C-n>:vsplit\|:terminal<cr>
-autocmd TermOpen * tnoremap <Esc> <C-\><C-n>
-autocmd BufWinEnter,WinEnter term://* tnoremap <C-N> <C-\><C-n>:vsplit\|:terminal<cr>
-autocmd BufWinEnter,WinEnter term://* tnoremap <Esc> <C-\><C-n>
+autocmd FileType fzf tnoremap <C-j> <Nop>
+autocmd FileType fzf tnoremap <C-h> <Nop>
+autocmd FileType fzf tnoremap <C-k> <Nop>
+autocmd FileType fzf tnoremap <C-l> <Nop>
+autocmd BufWinEnter,WinEnter,TermOpen term://* tnoremap <C-N> <C-\><C-n>:vsplit\|:terminal<cr>
+autocmd BufWinEnter,WinEnter,TermOpen term://* tnoremap <Esc> <C-\><C-n>
+autocmd BufWinEnter,WinEnter,TermOpen term://* tnoremap <silent> <C-h> <Cmd>TmuxNavigateLeft<CR>
+autocmd BufWinEnter,WinEnter,TermOpen term://* tnoremap <silent> <C-j> <Cmd>TmuxNavigateDown<CR>
+autocmd BufWinEnter,WinEnter,TermOpen term://* tnoremap <silent> <C-k> <Cmd>TmuxNavigateUp<CR>
+autocmd BufWinEnter,WinEnter,TermOpen term://* tnoremap <silent> <C-l> <Cmd>TmuxNavigateRight<CR>
 
 
 " map Ctrl+P to pasting
